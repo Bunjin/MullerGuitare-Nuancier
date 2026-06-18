@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Muller Guitare — palettes de couleur</title>
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<style>
+  :root{
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+    --ink:#2a2420; --paper:#e9e7e2; --hair:#cfc9bf; --soft:#7a7268;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:clamp(1.4rem,4vw,3.2rem) clamp(1rem,3vw,2rem)}
+
+  .topnav{display:flex;flex-wrap:wrap;gap:.4rem .6rem;margin-bottom:1.5rem}
+  .topnav a{font-family:var(--mono);font-size:.72rem;text-decoration:none;color:#5a5048;border:1px solid var(--hair);background:#fff;border-radius:100px;padding:.28rem .8rem}
+  .topnav a.is-on{background:#2a2420;color:#fff;border-color:#2a2420}
+
+  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#8a5a20}
+  .head h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.05;margin:.5rem 0 .7rem}
+  .head p{color:#494139;font-size:1.02rem;max-width:66ch}
+
+  .dir{margin-top:clamp(1.6rem,4vw,2.6rem);border-top:1px solid var(--hair);padding-top:1.4rem}
+  .dir__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .9rem;margin-bottom:.5rem}
+  .dir__tag{font-family:var(--mono);font-size:.76rem;font-weight:600;color:#fff;background:#2a2420;border-radius:3px;padding:.18rem .5rem}
+  .dir__name{font-family:var(--serif);font-weight:500;font-size:1.5rem}
+  .badge{font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5a3d0c;background:#f2d68a;border:1px solid #e2bf63;border-radius:100px;padding:.16rem .55rem}
+  .dir__concept{color:#544b41;font-size:.95rem;flex:1 1 240px;min-width:200px}
+
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.7rem 1.2rem;margin:.8rem 0 1rem;background:#fff;border:1px solid var(--hair);border-radius:8px;padding:.85rem 1rem}
+  .meta .l{font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--soft);margin-bottom:.2rem}
+  .meta .v{font-size:.86rem;color:#3b342c}
+  .meta .v b{color:#1f1a15}
+  .meta .num{font-family:var(--mono)}
+  .ok{color:#2f6b3a;font-weight:600}.warn{color:#9a6a10;font-weight:600}
+
+  .pal{display:flex;flex-wrap:wrap;gap:0;border-radius:8px;overflow:hidden;border:1px solid var(--hair)}
+  .pal__sw{flex:1;min-width:140px;height:96px;display:flex;flex-direction:column;justify-content:flex-end;padding:9px 11px}
+  .pal__sw b{font-size:.82rem;font-weight:500}
+  .pal__sw span{font-family:var(--mono);font-size:.68rem;opacity:.85}
+
+  .footer{margin-top:2.6rem;border-top:1px solid var(--hair);padding-top:1.2rem;color:#544b41;font-size:.92rem}
+  .footer a{color:#8a5a20;font-weight:600}
+
+  @media print{
+    @page{size:A4 portrait;margin:12mm}
+    html,body{background:#fff !important}
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    .wrap{max-width:none;padding:0}.topnav,.footer{display:none}
+    .dir{break-inside:avoid;page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav" id="topnav">
+    <a href="palettes.html">1 · Palettes</a>
+    <a href="generateur.html">2 · Générateur (police × couleur)</a>
+    <a href="polices.html">Polices (détail)</a>
+  </nav>
+  <script>(function(){var f=(location.pathname.split('/').pop()||'palettes.html');document.querySelectorAll('#topnav a[href]').forEach(function(a){if(a.getAttribute('href')===f)a.classList.add('is-on');});})();</script>
+
+  <header class="head">
+    <div class="kicker">Muller Guitare · étape 1 · les couleurs</div>
+    <h1>Quatre palettes de couleur</h1>
+    <p>Choisis d'abord l'<b>ambiance couleur</b> (indépendamment des polices). Chaque palette a son caractère et son archétype. Ensuite, à l'<b>étape 2 — le générateur</b>, tu combines n'importe quelle palette avec n'importe quelle police et tu vois le résultat sur les 3 écrans.</p>
+  </header>
+
+  <!-- A -->
+  <section class="dir">
+    <div class="dir__head"><span class="dir__tag">A</span><span class="dir__name">L'atelier sous la lampe</span>
+      <span class="dir__concept">L'instrument fini sur un noir laqué, sous une seule lumière chaude. Dramatique, haut de gamme : l'or rappelle le vernis et l'érable.</span></div>
+    <div class="meta">
+      <div><div class="l">Archétype</div><div class="v"><b>Luxury / Premium Brand</b> — « black + gold »</div></div>
+      <div><div class="l">Force / risque</div><div class="v">Imbattable en cover immersif. <span class="warn">Risque : « luxe générique » plus que « métier ».</span></div></div>
+      <div><div class="l">Contraste</div><div class="v">Crème <span class="num">#ECE3D1</span> / laque <span class="num">#14100D</span> ≈ <b>14:1</b> <span class="ok">AAA</span></div></div>
+    </div>
+    <div class="pal">
+      <div class="pal__sw" style="background:#14100D;color:#ECE3D1"><b>Laque</b><span>#14100D</span></div>
+      <div class="pal__sw" style="background:#ECE3D1;color:#4A3B2A"><b>Épicéa</b><span>#ECE3D1</span></div>
+      <div class="pal__sw" style="background:#C9A24B;color:#3D2E10"><b>Érable (or)</b><span>#C9A24B</span></div>
+      <div class="pal__sw" style="background:#6B4A33;color:#EAD9C6"><b>Palissandre</b><span>#6B4A33</span></div>
+      <div class="pal__sw" style="background:#7A2230;color:#F0CBD0"><b>Cerise</b><span>#7A2230</span></div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="dir">
+    <div class="dir__head"><span class="dir__tag">B</span><span class="dir__name">Le plan du luthier</span>
+      <span class="dir__concept">Le dessin technique de l'atelier : papier chaud, traits fins, cotes de mesure. La précision comme esthétique. Angles vifs.</span></div>
+    <div class="meta">
+      <div><div class="l">Archétype</div><div class="v"><b>Architecture / Studio</b> — « monochrome + blueprint »</div></div>
+      <div><div class="l">Force / risque</div><div class="v">Meilleure lisibilité brute. <span class="warn">Risque : lecture « ingénieur » plutôt qu'artisan.</span></div></div>
+      <div><div class="l">Contraste</div><div class="v">Encre <span class="num">#211C17</span> / papier <span class="num">#EEEBE3</span> ≈ <b>12:1</b> <span class="ok">AAA</span></div></div>
+    </div>
+    <div class="pal">
+      <div class="pal__sw" style="background:#EEEBE3;color:#211C17"><b>Papier</b><span>#EEEBE3</span></div>
+      <div class="pal__sw" style="background:#FBFAF6;color:#211C17"><b>Calque</b><span>#FBFAF6</span></div>
+      <div class="pal__sw" style="background:#211C17;color:#EEEBE3"><b>Encre</b><span>#211C17</span></div>
+      <div class="pal__sw" style="background:#2C3A42;color:#D7E2E6"><b>Graphite</b><span>#2C3A42</span></div>
+      <div class="pal__sw" style="background:#9A5A2A;color:#F3E2D0"><b>Acajou</b><span>#9A5A2A</span></div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="dir">
+    <div class="dir__head"><span class="dir__tag">C</span><span class="dir__name">La laque signature</span>
+      <span class="dir__concept">La couleur du vernis comme identité, mais sobre : un cerise profond et mat (la Black Cherry), accents laiton, formes douces. Version immersive (tout le site sur cerise sombre).</span></div>
+    <div class="meta">
+      <div><div class="l">Archétype</div><div class="v"><b>Brewery / Winery</b> (craft) — « burgundy + gold »</div></div>
+      <div><div class="l">Force / risque</div><div class="v">Identité forte et distinctive. <span class="warn">Risque : tout-sombre = pages de texte plus lourdes.</span></div></div>
+      <div><div class="l">Contraste</div><div class="v">Crème <span class="num">#F3E6D8</span> / cerise <span class="num">#3A2228</span> ≈ <b>11:1</b> <span class="ok">AAA</span></div></div>
+    </div>
+    <div class="pal">
+      <div class="pal__sw" style="background:#3A2228;color:#F3E6D8"><b>Cerise mat</b><span>#3A2228</span></div>
+      <div class="pal__sw" style="background:#4A2E34;color:#F3E6D8"><b>Cerise clair</b><span>#4A2E34</span></div>
+      <div class="pal__sw" style="background:#E2A93C;color:#4A2E06"><b>Laiton</b><span>#E2A93C</span></div>
+      <div class="pal__sw" style="background:#6B4A33;color:#EAD9C6"><b>Palissandre</b><span>#6B4A33</span></div>
+      <div class="pal__sw" style="background:#F3E6D8;color:#5A2A30"><b>Crème</b><span>#F3E6D8</span></div>
+    </div>
+  </section>
+
+  <!-- D -->
+  <section class="dir">
+    <div class="dir__head"><span class="dir__tag">D</span><span class="dir__name">La synthèse</span><span class="badge">★ Recommandée</span>
+      <span class="dir__concept">L'âme de C (cerise + laiton) sur une base claire chaude pour la lisibilité, avec le cover sombre de A. La piste la plus équilibrée : chaleureuse, lisible et premium.</span></div>
+    <div class="meta">
+      <div><div class="l">Composition</div><div class="v"><b>C</b> (âme) + base claire + <b>cover sombre de A</b></div></div>
+      <div><div class="l">Force</div><div class="v">Base claire = pages de texte lisibles ; cover sombre = guitares qui ressortent. <span class="ok">La plus polyvalente.</span></div></div>
+      <div><div class="l">Contraste</div><div class="v">Cerise <span class="num">#2E1A1F</span> / crème <span class="num">#FAF6EE</span> ≈ <b>13:1</b> <span class="ok">AAA</span></div></div>
+    </div>
+    <div class="pal">
+      <div class="pal__sw" style="background:#FAF6EE;color:#2E1A1F"><b>Crème (fond)</b><span>#FAF6EE</span></div>
+      <div class="pal__sw" style="background:#2E1A1F;color:#F4E7D9"><b>Encre cerise</b><span>#2E1A1F</span></div>
+      <div class="pal__sw" style="background:#1E1216;color:#F4E7D9"><b>Cover sombre</b><span>#1E1216</span></div>
+      <div class="pal__sw" style="background:#B5863A;color:#2E1206"><b>Laiton (fill)</b><span>#B5863A</span></div>
+      <div class="pal__sw" style="background:#8A5A20;color:#F6E7CF"><b>Laiton (texte)</b><span>#8A5A20</span></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    Une fois l'ambiance repérée → <a href="generateur.html">étape 2 : le générateur</a> pour combiner couleur × police et voir les 3 écrans.
+  </footer>
+
+</div>
+</body>
+</html>

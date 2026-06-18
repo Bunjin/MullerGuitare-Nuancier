@@ -41,6 +41,9 @@
   .m-nums{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;font-size:.98rem;color:#3a2f22}
   .cta{display:inline-block;margin-top:1rem;font-family:var(--mono);font-size:.74rem;text-decoration:none;color:#fff;background:#2a2420;border-radius:100px;padding:.4rem .9rem}
   .cta:hover{background:#8a5a20}
+  .topnav{display:flex;flex-wrap:wrap;gap:.4rem .6rem;margin-bottom:1.4rem}
+  .topnav a{font-family:var(--mono);font-size:.72rem;text-decoration:none;color:#5a5048;border:1px solid var(--hair);background:#fff;border-radius:100px;padding:.28rem .8rem}
+  .topnav a.is-on{background:#2a2420;color:#fff;border-color:#2a2420}
 
   /* polices par proposition (seul ceci diffère d'une carte à l'autre) */
   .p1{--d:"Fraunces",serif;--b:"Inter",sans-serif;--tw:500}
@@ -63,11 +66,18 @@
 <body>
 <div class="wrap">
 
+  <nav class="topnav" id="topnav">
+    <a href="palettes.html">1 · Palettes</a>
+    <a href="generateur.html">2 · Générateur (police × couleur)</a>
+    <a href="polices.html">Polices (détail)</a>
+  </nav>
+  <script>(function(){var f=(location.pathname.split('/').pop()||'polices.html');document.querySelectorAll('#topnav a[href]').forEach(function(a){if(a.getAttribute('href')===f)a.classList.add('is-on');});})();</script>
+
   <header class="head">
     <div class="kicker">Muller Guitare · typographie · 3 propositions</div>
     <h1>Trois systèmes de polices à comparer</h1>
     <p>Chaque proposition = <b>titres</b> (serif) + <b>texte</b> (sans) + <b>chiffres</b> (mono, commune aux trois : IBM Plex Mono). Toutes <b>auto-hébergées</b> (RGPD, zéro requête externe). Les spécimens ci-dessous sont rendus dans la vraie police.</p>
-    <p class="note"><b>Comment s'en servir :</b> repère la proposition qui te parle, puis clique « <b>Voir le nuancier</b> » pour la voir appliquée aux 4 directions couleur (A/B/C/D). Le choix de la <b>police</b> et celui de la <b>couleur/forme</b> sont indépendants — on peut mixer n'importe quelle police avec n'importe quelle direction.</p>
+    <p class="note"><b>Comment s'en servir :</b> repère la proposition qui te parle, puis ouvre le <b>générateur</b> pour la combiner aux 4 directions couleur (A/B/C/D) et voir les 3 écrans. Le choix de la <b>police</b> et celui de la <b>couleur</b> sont indépendants — n'importe quelle police va avec n'importe quelle direction.</p>
   </header>
 
   <!-- P1 -->
@@ -82,7 +92,7 @@
     <div class="spec"><div class="spec__role">Titres</div><div class="spec__body"><div class="d-title">The Black Cherry</div><div class="d-sub">L'art de la lutherie</div></div></div>
     <div class="spec"><div class="spec__role">Texte</div><div class="spec__body b-text">Une relecture de la Duo Jet, travaillée dans la masse : table érable, corps noyer, micros Hepcat Dynasonic. Chaque instrument est fabriqué à la main à Avignon.</div></div>
     <div class="spec"><div class="spec__role">Chiffres</div><div class="spec__body m-nums">DIAPASON 632 mm · À PARTIR DE 4&#8239;200&nbsp;€ · LIVRAISON mars 2028</div></div>
-    <a class="cta" href="nuancier-p1.html">Voir le nuancier avec P1 →</a>
+    <a class="cta" href="generateur.html?f=p1">Tester P1 dans le générateur →</a>
   </section>
 
   <!-- P2 -->
@@ -96,7 +106,7 @@
     <div class="spec"><div class="spec__role">Titres</div><div class="spec__body"><div class="d-title">The Black Cherry</div><div class="d-sub">L'art de la lutherie</div></div></div>
     <div class="spec"><div class="spec__role">Texte</div><div class="spec__body b-text">Une relecture de la Duo Jet, travaillée dans la masse : table érable, corps noyer, micros Hepcat Dynasonic. Chaque instrument est fabriqué à la main à Avignon.</div></div>
     <div class="spec"><div class="spec__role">Chiffres</div><div class="spec__body m-nums">DIAPASON 632 mm · À PARTIR DE 4&#8239;200&nbsp;€ · LIVRAISON mars 2028</div></div>
-    <a class="cta" href="nuancier-p2.html">Voir le nuancier avec P2 →</a>
+    <a class="cta" href="generateur.html?f=p2">Tester P2 dans le générateur →</a>
   </section>
 
   <!-- P3 -->
@@ -110,7 +120,7 @@
     <div class="spec"><div class="spec__role">Titres</div><div class="spec__body"><div class="d-title">The Black Cherry</div><div class="d-sub">L'art de la lutherie</div></div></div>
     <div class="spec"><div class="spec__role">Texte</div><div class="spec__body b-text">Une relecture de la Duo Jet, travaillée dans la masse : table érable, corps noyer, micros Hepcat Dynasonic. Chaque instrument est fabriqué à la main à Avignon.</div></div>
     <div class="spec"><div class="spec__role">Chiffres</div><div class="spec__body m-nums">DIAPASON 632 mm · À PARTIR DE 4&#8239;200&nbsp;€ · LIVRAISON mars 2028</div></div>
-    <a class="cta" href="nuancier-p3.html">Voir le nuancier avec P3 →</a>
+    <a class="cta" href="generateur.html?f=p3">Tester P3 dans le générateur →</a>
   </section>
 
   <footer class="footer">

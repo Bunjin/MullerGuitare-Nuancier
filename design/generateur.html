@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Muller Guitare — générateur (police × couleur)</title>
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<style>
+  :root{
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+    --ink:#2a2420; --paper:#e9e7e2; --hair:#cfc9bf; --soft:#7a7268;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(1.4rem,4vw,3.2rem) clamp(1rem,3vw,2rem)}
+
+  .topnav{display:flex;flex-wrap:wrap;gap:.4rem .6rem;margin-bottom:1.4rem}
+  .topnav a{font-family:var(--mono);font-size:.72rem;text-decoration:none;color:#5a5048;border:1px solid var(--hair);background:#fff;border-radius:100px;padding:.28rem .8rem}
+  .topnav a.is-on{background:#2a2420;color:#fff;border-color:#2a2420}
+
+  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#8a5a20}
+  .head h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.05;margin:.5rem 0 .6rem}
+  .head p{color:#494139;font-size:1rem;max-width:68ch}
+
+  /* ---------- tableau croisé ---------- */
+  .matrix{display:grid;grid-template-columns:minmax(120px,1.2fr) repeat(4,1fr);gap:6px;margin:1.4rem 0 1rem}
+  .mh{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--soft);display:flex;align-items:flex-end;padding:0 0 .35rem .15rem;line-height:1.25}
+  .mr{font-family:var(--mono);font-size:.7rem;color:#3b342c;display:flex;align-items:center;padding-right:.5rem;line-height:1.2}
+  .cell{position:relative;border:1px solid var(--line,#cfc9bf);border-radius:8px;background:var(--bg);color:var(--fg);height:64px;cursor:pointer;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0;transition:transform .08s ease}
+  .cell:hover{transform:translateY(-1px)}
+  .cell__aa{font-family:var(--serif);font-weight:var(--tw);font-size:1.7rem;line-height:1;letter-spacing:-.01em}
+  .cell__dot{position:absolute;top:7px;right:8px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+  .cell.is-on{outline:3px solid #2a2420;outline-offset:2px}
+  .cell.is-on::after{content:"●";position:absolute;left:7px;top:4px;font-size:.6rem;color:var(--accent)}
+
+  .caption{font-family:var(--mono);font-size:.78rem;color:#3b342c;background:#fff;border:1px solid var(--hair);border-radius:8px;padding:.6rem .85rem;margin-bottom:1.3rem}
+  .caption b{color:#8a5a20}
+
+  /* ---------- 3 écrans générés ---------- */
+  .screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1.1rem}
+  .comp__wrap{min-width:0}
+  .comp__cap{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin:0 0 .4rem .1rem}
+  .frame{border:1px solid var(--hair);border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05),0 12px 32px rgba(0,0,0,.07);background:#fff}
+  .frame__bar{height:22px;background:#ddd8cf;display:flex;align-items:center;gap:4px;padding:0 8px}
+  .frame__bar i{width:7px;height:7px;border-radius:50%;background:#bbb3a6}
+
+  /* internes thématisés */
+  .comp{background:var(--bg);color:var(--fg);font-family:var(--body)}
+  .eb{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+  .ttl{font-family:var(--display);color:var(--fg);line-height:1.02;font-weight:var(--tw);letter-spacing:-.005em}
+  .rule{height:2px;width:46px;background:var(--accent);border:0}
+  .muted{color:var(--muted)}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .speclab{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .specval{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11px;color:var(--fg)}
+  .price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--accent-ink)}
+  .chip{font-size:10px;border:1px solid var(--line);color:var(--fg);border-radius:var(--chip-r);padding:3px 9px;background:var(--chip-bg)}
+  .chip--on{background:var(--accent);color:var(--btn-fg);border-color:var(--accent)}
+  .sw{width:26px;height:26px;border-radius:var(--sw-r);border:1px solid var(--line)}
+  .btn{font-size:11px;font-weight:600;color:var(--btn-fg);background:var(--accent);border-radius:var(--btn-r);padding:7px 12px;display:inline-block}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--card-r);padding:11px 13px}
+  .cover{position:relative;overflow:hidden;background:#000}
+  .cover img{width:100%;height:100%;object-fit:cover}
+  .cover__o{position:absolute;inset:0;background:var(--cover-grad)}
+  .cover__c{position:absolute;left:14px;right:14px;bottom:12px;color:var(--cover-fg)}
+  .cover__c .ttl,.cover__c .eb{color:var(--cover-fg)}
+  .cat{position:relative;aspect-ratio:5/2;overflow:hidden}
+  .cat+.cat{border-top:1px solid var(--bg)}
+  .cat img{width:100%;height:100%;object-fit:cover}
+  .cat__o{position:absolute;inset:0;background:var(--cover-grad)}
+  .cat__l{position:absolute;left:14px;bottom:9px;font-family:var(--display);font-size:15px;color:var(--cover-fg)}
+  .th{aspect-ratio:1;border-radius:var(--sw-r);overflow:hidden}
+  .th img{width:100%;height:100%;object-fit:cover}
+
+  /* ===== palettes couleur (A/B/C/D) ===== */
+  .theme-a{--bg:#14100D;--surface:#1C1611;--fg:#ECE3D1;--muted:#9C8E79;--accent:#C9A24B;--accent-ink:#D9B568;
+    --line:rgba(236,227,209,.16);--display:var(--serif);--body:var(--sans);
+    --chip-bg:transparent;--chip-r:100px;--sw-r:3px;--btn-r:2px;--btn-fg:#14100D;--card-r:3px;
+    --cover-grad:linear-gradient(180deg,rgba(20,16,13,.16) 0%,rgba(20,16,13,0) 30%,rgba(20,16,13,.93));--cover-fg:#ECE3D1}
+  .theme-b{--bg:#EEEBE3;--surface:#FBFAF6;--fg:#211C17;--muted:#6B6258;--accent:#2C3A42;--accent-ink:#2C3A42;
+    --line:rgba(33,28,23,.22);--display:var(--serif);--body:var(--sans);
+    --chip-bg:#fff;--chip-r:0;--sw-r:0;--btn-r:0;--btn-fg:#fff;--card-r:0;
+    --cover-grad:linear-gradient(180deg,rgba(238,235,227,0) 40%,rgba(238,235,227,.30) 64%,rgba(238,235,227,.92));--cover-fg:#211C17}
+  .theme-c{--bg:#3A2228;--surface:#4A2E34;--fg:#F3E6D8;--muted:#C2A1A6;--accent:#E2A93C;--accent-ink:#E2A93C;
+    --line:rgba(243,230,216,.16);--display:var(--serif);--body:var(--sans);
+    --chip-bg:rgba(243,230,216,.07);--chip-r:100px;--sw-r:8px;--btn-r:100px;--btn-fg:#3A0F16;--card-r:12px;
+    --cover-grad:linear-gradient(180deg,rgba(58,34,40,.14) 0%,rgba(58,34,40,0) 30%,rgba(58,34,40,.95));--cover-fg:#F3E6D8}
+  .theme-d{--bg:#FAF6EE;--surface:#FFFFFF;--fg:#2E1A1F;--muted:#8a6a60;--accent:#B5863A;--accent-ink:#8A5A20;
+    --line:rgba(46,26,31,.14);--display:var(--serif);--body:var(--sans);
+    --chip-bg:#fff;--chip-r:100px;--sw-r:8px;--btn-r:100px;--btn-fg:#2E1A1F;--card-r:12px;
+    --cover-grad:linear-gradient(180deg,rgba(30,18,22,.10) 0%,rgba(30,18,22,0) 28%,rgba(30,18,22,.94));--cover-fg:#F4E7D9}
+
+  /* ===== presets de police (P1/P2/P3) ===== */
+  .font-p1{--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--tw:500}
+  .font-p2{--serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",system-ui,sans-serif;--tw:600}
+  .font-p3{--serif:"Bodoni Moda",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--tw:600}
+
+  .footer{margin-top:2.4rem;border-top:1px solid var(--hair);padding-top:1.2rem;color:#544b41;font-size:.92rem}
+  .footer a{color:#8a5a20;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav" id="topnav">
+    <a href="palettes.html">1 · Palettes</a>
+    <a href="generateur.html">2 · Générateur (police × couleur)</a>
+    <a href="polices.html">Polices (détail)</a>
+  </nav>
+  <script>(function(){var f=(location.pathname.split('/').pop()||'generateur.html');document.querySelectorAll('#topnav a[href]').forEach(function(a){if(a.getAttribute('href')===f)a.classList.add('is-on');});})();</script>
+
+  <header class="head">
+    <div class="kicker">Muller Guitare · étape 2 · générateur</div>
+    <h1>Police × couleur — les 12 combinaisons</h1>
+    <p>Choisis une case dans le tableau (3 polices × 4 palettes). Les 3 écrans — <b>accueil</b>, <b>page modèle</b>, <b>configurateur</b> — se régénèrent aussitôt dans cette combinaison. Le « Aa » de chaque case montre déjà la police sur la couleur.</p>
+  </header>
+
+  <div class="matrix" id="matrix"></div>
+  <div class="caption" id="caption"></div>
+  <div class="screens" id="preview"></div>
+
+  <footer class="footer">
+    Reviens aux <a href="palettes.html">palettes</a> ou au <a href="polices.html">détail des polices</a>. Quand une combinaison te plaît, dis-moi la case (ex. « <b>P2 × C</b> ») — on la prototype en vrai dans le site.
+  </footer>
+
+</div>
+
+<script>
+  var HERO_IMG = "../assets/img/wp/2022/09/biographie-muller-guitare.jpg";
+  var IMG_ELEC = "../assets/img/wp/2025/04/black-cherry-muller-guitare654.webp";
+  var IMG_ACOU = "../assets/img/wp/2024/05/000-11.jpg";
+  var GAL = [
+    "../assets/img/wp/2025/04/black-cherry-muller-guitare596.thumb.webp",
+    "../assets/img/wp/2025/04/black-cherry-muller-guitare634.thumb.webp",
+    "../assets/img/wp/2025/04/black-cherry-muller-guitare603.thumb.webp",
+    "../assets/img/wp/2025/04/black-cherry-muller-guitare654.thumb.webp"
+  ];
+  var FONTS = [
+    { id:"p1", name:"P1 · Fraunces + Inter" },
+    { id:"p2", name:"P2 · Cormorant + Jost" },
+    { id:"p3", name:"P3 · Bodoni + Inter" }
+  ];
+  var COLORS = [
+    { id:"a", short:"A", name:"L'atelier sous la lampe" },
+    { id:"b", short:"B", name:"Le plan du luthier" },
+    { id:"c", short:"C", name:"La laque signature" },
+    { id:"d", short:"D", name:"La synthèse ★" }
+  ];
+  var FONT_DESC = { p1:"Fraunces + Inter", p2:"Cormorant Garamond + Jost", p3:"Bodoni Moda + Inter" };
+
+  function comp(cap, inner){
+    return '<div class="comp__wrap"><p class="comp__cap">'+cap+'</p>'
+      +'<div class="frame"><div class="frame__bar"><i></i><i></i><i></i></div>'
+      +'<div class="comp">'+inner+'</div></div></div>';
+  }
+  function homeComp(){
+    return comp('Accueil',
+      '<div class="cover" style="aspect-ratio:16/11"><img src="'+HERO_IMG+'" alt="Loïc Muller dans son atelier">'
+        +'<div class="cover__o"></div><div class="cover__c">'
+          +'<div class="eb">Atelier · Avignon · depuis 2015</div>'
+          +'<div class="ttl" style="font-size:30px;margin:5px 0 7px">L\'art de la lutherie</div><hr class="rule"></div></div>'
+      +'<div class="cat"><img src="'+IMG_ELEC+'" alt="Guitare électrique"><div class="cat__o"></div><span class="cat__l">Guitares électriques</span></div>'
+      +'<div class="cat"><img src="'+IMG_ACOU+'" alt="Guitare acoustique"><div class="cat__o"></div><span class="cat__l">Guitares acoustiques</span></div>');
+  }
+  function modeleComp(){
+    var specs = [['Table','Érable'],['Corps','Noyer'],['Manche','Érable ondé'],['Touche','Ébène'],['Micros','Hepcat Dynasonic'],['Diapason','632 mm']];
+    var rows = specs.map(function(s){
+      return '<div style="display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px solid var(--line)">'
+        +'<span class="speclab">'+s[0]+'</span><span class="specval">'+s[1]+'</span></div>';
+    }).join('');
+    var gal = GAL.map(function(t){ return '<div class="th"><img src="'+t+'" alt="The Black Cherry, détail"></div>'; }).join('');
+    return comp('Page modèle',
+      '<div class="cover" style="aspect-ratio:16/10"><img src="'+IMG_ELEC+'" alt="The Black Cherry">'
+        +'<div class="cover__o"></div><div class="cover__c">'
+          +'<div class="eb">Guitare électrique</div>'
+          +'<div class="ttl" style="font-size:26px;margin:4px 0 5px">The Black Cherry</div>'
+          +'<div style="font-family:var(--serif);font-size:13px;opacity:.92">Une relecture de la Duo Jet, travaillée dans la masse.</div></div></div>'
+      +'<div style="padding:11px 13px;background:var(--bg)">'
+        +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="eb">Caractéristiques</span><span class="price" style="font-size:14px">À partir de 4&#8239;200&nbsp;€</span></div>'
+        + rows
+        +'<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0 2px"><span class="speclab">Livraison estimée</span><span class="num" style="font-size:11px;color:var(--muted)">mars 2028</span></div>'
+        +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:9px 0">'+gal+'</div>'
+        +'<span class="btn">Configurer &amp; demander un devis</span></div>');
+  }
+  function configComp(){
+    var lbl = function(label, picked){ return '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">'
+      +'<span class="speclab">'+label+'</span><span class="specval" style="color:var(--accent-ink)">'+picked+'</span></div>'; };
+    var woods = function(arr,sel){ return '<div style="display:flex;gap:6px">'+arr.map(function(c,i){
+      return '<span class="sw" style="background:'+c+';'+(i===sel?'outline:2px solid var(--accent);outline-offset:1px':'')+'"></span>'; }).join('')+'</div>'; };
+    var chips = function(arr,sel){ return '<div style="display:flex;gap:6px;flex-wrap:wrap">'+arr.map(function(t,i){
+      return '<span class="chip'+(i===sel?' chip--on':'')+'">'+t+'</span>'; }).join('')+'</div>'; };
+    return comp('Configurateur de devis',
+      '<div style="padding:12px 13px;background:var(--bg)">'
+        +'<div class="eb">Configurateur · devis</div>'
+        +'<div class="ttl" style="font-size:16px;margin:3px 0 11px">Configurer — The Black Cherry</div>'
+        +'<div style="margin-bottom:9px">'+lbl('Table','Érable ondé AAA')+woods(['#C9A24B','#D8B878'],0)+'</div>'
+        +'<div style="margin-bottom:9px">'+lbl('Manche','Érable ondé')+woods(['#D2AE6E','#caa46a','#8a6a3c'],0)+'</div>'
+        +'<div style="margin-bottom:9px">'+lbl('Touche','Ébène')+woods(['#2b2622','#46362a','#6B4A33'],0)+'</div>'
+        +'<div style="margin-bottom:11px">'+lbl('Micros','Hepcat Dynasonic')+chips(['Dynasonic','P90','Humbucker'],0)+'</div>'
+        +'<div class="card" style="display:flex;align-items:center;gap:10px">'
+          +'<img src="'+GAL[3]+'" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:var(--sw-r);flex:none">'
+          +'<div style="flex:1;min-width:0"><div class="speclab">Estimation</div><div class="price" style="font-size:15px">À partir de 4&#8239;200&nbsp;€</div></div>'
+          +'<span class="btn">Demander le devis</span></div></div>');
+  }
+
+  // rendu des 3 écrans (une seule fois ; le restyle se fait par les variables CSS)
+  var preview = document.getElementById('preview');
+  preview.innerHTML = homeComp() + modeleComp() + configComp();
+
+  // construction du tableau croisé
+  var matrix = document.getElementById('matrix');
+  var caption = document.getElementById('caption');
+  var html = '<div class="mh"></div>';
+  COLORS.forEach(function(c){ html += '<div class="mh">'+c.short+' · '+c.name+'</div>'; });
+  FONTS.forEach(function(f){
+    html += '<div class="mr">'+f.name+'</div>';
+    COLORS.forEach(function(c){
+      html += '<button class="cell theme-'+c.id+' font-'+f.id+'" data-f="'+f.id+'" data-c="'+c.id+'" '
+        +'aria-label="Police '+f.id.toUpperCase()+' × Couleur '+c.short+'">'
+        +'<span class="cell__dot"></span><span class="cell__aa">Aa</span></button>';
+    });
+  });
+  matrix.innerHTML = html;
+
+  function select(f, c){
+    preview.className = 'screens theme-'+c+' font-'+f;
+    var col = COLORS.find(function(x){return x.id===c;});
+    caption.innerHTML = 'Aperçu : <b>Police '+f.toUpperCase()+'</b> ('+FONT_DESC[f]+') × <b>Couleur '+col.short+'</b> — '+col.name;
+    [].forEach.call(matrix.querySelectorAll('.cell'), function(b){
+      b.classList.toggle('is-on', b.dataset.f===f && b.dataset.c===c);
+    });
+  }
+  matrix.addEventListener('click', function(e){
+    var b = e.target.closest('.cell'); if(!b) return;
+    select(b.dataset.f, b.dataset.c);
+    preview.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // sélection initiale (via ?f= / ?c=) ; défaut P1 × D (la synthèse recommandée)
+  var qs = new URLSearchParams(location.search);
+  var f0 = ['p1','p2','p3'].indexOf(qs.get('f')) >= 0 ? qs.get('f') : 'p1';
+  var c0 = ['a','b','c','d'].indexOf(qs.get('c')) >= 0 ? qs.get('c') : 'd';
+  select(f0, c0);
+</script>
+</body>
+</html>
