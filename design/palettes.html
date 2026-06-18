@@ -44,6 +44,26 @@
   .pal__sw b{font-size:.82rem;font-weight:500}
   .pal__sw span{font-family:var(--mono);font-size:.68rem;opacity:.85}
 
+  /* ===== mini-aperçu du style (couleur seulement ; police P1 par défaut) ===== */
+  .preview{margin:.1rem 0 1.1rem}
+  .pv{max-width:520px;border:1px solid var(--line);border-radius:var(--card-r);overflow:hidden;background:var(--bg)}
+  .pv-cover{position:relative;aspect-ratio:16/7;overflow:hidden;background:#000}
+  .pv-cover img{width:100%;height:100%;object-fit:cover}
+  .pv-cover__o{position:absolute;inset:0;background:var(--cover-grad)}
+  .pv-cover__c{position:absolute;left:12px;right:12px;bottom:9px;display:flex;flex-direction:column;gap:2px}
+  .pv-eb{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--cover-fg);opacity:.92}
+  .pv-ttl{font-family:var(--display);font-weight:var(--tw,500);font-size:1.35rem;line-height:1;letter-spacing:-.01em;color:var(--cover-fg)}
+  .pv-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:9px 12px;background:var(--bg);color:var(--fg)}
+  .pv-price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;font-size:.85rem;color:var(--accent-ink)}
+  .pv-chip{font-size:.72rem;border:1px solid var(--line);color:var(--fg);border-radius:var(--chip-r);padding:2px 9px;background:var(--chip-bg)}
+  .pv-btn{font-size:.74rem;font-weight:600;color:var(--btn-fg);background:var(--accent);border-radius:var(--btn-r);padding:5px 11px;margin-left:auto}
+
+  /* tokens des palettes (mêmes valeurs que le générateur) */
+  .theme-a{--bg:#14100D;--fg:#ECE3D1;--accent:#C9A24B;--accent-ink:#D9B568;--line:rgba(236,227,209,.16);--display:var(--serif);--chip-bg:transparent;--chip-r:100px;--btn-r:2px;--btn-fg:#14100D;--card-r:3px;--cover-grad:linear-gradient(180deg,rgba(20,16,13,.16) 0%,rgba(20,16,13,0) 30%,rgba(20,16,13,.93));--cover-fg:#ECE3D1}
+  .theme-b{--bg:#EEEBE3;--fg:#211C17;--accent:#2C3A42;--accent-ink:#2C3A42;--line:rgba(33,28,23,.22);--display:var(--serif);--chip-bg:#fff;--chip-r:0;--btn-r:0;--btn-fg:#fff;--card-r:0;--cover-grad:linear-gradient(180deg,rgba(238,235,227,0) 40%,rgba(238,235,227,.30) 64%,rgba(238,235,227,.92));--cover-fg:#211C17}
+  .theme-c{--bg:#3A2228;--fg:#F3E6D8;--accent:#E2A93C;--accent-ink:#E2A93C;--line:rgba(243,230,216,.16);--display:var(--serif);--chip-bg:rgba(243,230,216,.07);--chip-r:100px;--btn-r:100px;--btn-fg:#3A0F16;--card-r:12px;--cover-grad:linear-gradient(180deg,rgba(58,34,40,.14) 0%,rgba(58,34,40,0) 30%,rgba(58,34,40,.95));--cover-fg:#F3E6D8}
+  .theme-d{--bg:#FAF6EE;--fg:#2E1A1F;--accent:#B5863A;--accent-ink:#8A5A20;--line:rgba(46,26,31,.14);--display:var(--serif);--chip-bg:#fff;--chip-r:100px;--btn-r:100px;--btn-fg:#2E1A1F;--card-r:12px;--cover-grad:linear-gradient(180deg,rgba(30,18,22,.10) 0%,rgba(30,18,22,0) 28%,rgba(30,18,22,.94));--cover-fg:#F4E7D9}
+
   .footer{margin-top:2.6rem;border-top:1px solid var(--hair);padding-top:1.2rem;color:#544b41;font-size:.92rem}
   .footer a{color:#8a5a20;font-weight:600}
 
@@ -69,13 +89,21 @@
   <header class="head">
     <div class="kicker">Muller Guitare · étape 1 · les couleurs</div>
     <h1>Quatre palettes de couleur</h1>
-    <p>Choisis d'abord l'<b>ambiance couleur</b> (indépendamment des polices). Chaque palette a son caractère et son archétype. Ensuite, regarde les <b>polices</b> (étape 2), puis combine tout dans le <b>générateur</b> (étape 3) pour voir le résultat sur les 3 écrans.</p>
+    <p>Choisis d'abord l'<b>ambiance couleur</b> (indépendamment des polices). Chaque palette a son caractère et son archétype. Ensuite, regarde les <b>polices</b> (étape 2), puis combine tout dans le <b>générateur</b> (étape 3) pour voir le résultat sur les 3 écrans. <em>Les mini-aperçus ci-dessous donnent l'ambiance couleur (en police par défaut).</em></p>
   </header>
 
   <!-- A -->
   <section class="dir">
     <div class="dir__head"><span class="dir__tag">A</span><span class="dir__name">L'atelier sous la lampe</span>
       <span class="dir__concept">L'instrument fini sur un noir laqué, sous une seule lumière chaude. Dramatique, haut de gamme : l'or rappelle le vernis et l'érable.</span></div>
+    <div class="preview theme-a">
+      <div class="pv">
+        <div class="pv-cover"><img src="../assets/img/wp/2025/04/black-cherry-muller-guitare654.webp" alt="Aperçu du style">
+          <div class="pv-cover__o"></div>
+          <div class="pv-cover__c"><span class="pv-eb">Guitare électrique</span><span class="pv-ttl">The Black Cherry</span></div></div>
+        <div class="pv-foot"><span class="pv-price">À partir de 4&#8239;200&nbsp;€</span><span class="pv-chip">Dynasonic</span><span class="pv-btn">Demander un devis</span></div>
+      </div>
+    </div>
     <div class="meta">
       <div><div class="l">Archétype</div><div class="v"><b>Luxury / Premium Brand</b> — « black + gold »</div></div>
       <div><div class="l">Force / risque</div><div class="v">Imbattable en cover immersif. <span class="warn">Risque : « luxe générique » plus que « métier ».</span></div></div>
@@ -94,6 +122,14 @@
   <section class="dir">
     <div class="dir__head"><span class="dir__tag">B</span><span class="dir__name">Le plan du luthier</span>
       <span class="dir__concept">Le dessin technique de l'atelier : papier chaud, traits fins, cotes de mesure. La précision comme esthétique. Angles vifs.</span></div>
+    <div class="preview theme-b">
+      <div class="pv">
+        <div class="pv-cover"><img src="../assets/img/wp/2025/04/black-cherry-muller-guitare654.webp" alt="Aperçu du style">
+          <div class="pv-cover__o"></div>
+          <div class="pv-cover__c"><span class="pv-eb">Guitare électrique</span><span class="pv-ttl">The Black Cherry</span></div></div>
+        <div class="pv-foot"><span class="pv-price">À partir de 4&#8239;200&nbsp;€</span><span class="pv-chip">Dynasonic</span><span class="pv-btn">Demander un devis</span></div>
+      </div>
+    </div>
     <div class="meta">
       <div><div class="l">Archétype</div><div class="v"><b>Architecture / Studio</b> — « monochrome + blueprint »</div></div>
       <div><div class="l">Force / risque</div><div class="v">Meilleure lisibilité brute. <span class="warn">Risque : lecture « ingénieur » plutôt qu'artisan.</span></div></div>
@@ -112,6 +148,14 @@
   <section class="dir">
     <div class="dir__head"><span class="dir__tag">C</span><span class="dir__name">La laque signature</span>
       <span class="dir__concept">La couleur du vernis comme identité, mais sobre : un cerise profond et mat (la Black Cherry), accents laiton, formes douces. Version immersive (tout le site sur cerise sombre).</span></div>
+    <div class="preview theme-c">
+      <div class="pv">
+        <div class="pv-cover"><img src="../assets/img/wp/2025/04/black-cherry-muller-guitare654.webp" alt="Aperçu du style">
+          <div class="pv-cover__o"></div>
+          <div class="pv-cover__c"><span class="pv-eb">Guitare électrique</span><span class="pv-ttl">The Black Cherry</span></div></div>
+        <div class="pv-foot"><span class="pv-price">À partir de 4&#8239;200&nbsp;€</span><span class="pv-chip">Dynasonic</span><span class="pv-btn">Demander un devis</span></div>
+      </div>
+    </div>
     <div class="meta">
       <div><div class="l">Archétype</div><div class="v"><b>Brewery / Winery</b> (craft) — « burgundy + gold »</div></div>
       <div><div class="l">Force / risque</div><div class="v">Identité forte et distinctive. <span class="warn">Risque : tout-sombre = pages de texte plus lourdes.</span></div></div>
@@ -130,6 +174,14 @@
   <section class="dir">
     <div class="dir__head"><span class="dir__tag">D</span><span class="dir__name">La synthèse</span><span class="badge">★ Recommandée</span>
       <span class="dir__concept">L'âme de C (cerise + laiton) sur une base claire chaude pour la lisibilité, avec le cover sombre de A. La piste la plus équilibrée : chaleureuse, lisible et premium.</span></div>
+    <div class="preview theme-d">
+      <div class="pv">
+        <div class="pv-cover"><img src="../assets/img/wp/2025/04/black-cherry-muller-guitare654.webp" alt="Aperçu du style">
+          <div class="pv-cover__o"></div>
+          <div class="pv-cover__c"><span class="pv-eb">Guitare électrique</span><span class="pv-ttl">The Black Cherry</span></div></div>
+        <div class="pv-foot"><span class="pv-price">À partir de 4&#8239;200&nbsp;€</span><span class="pv-chip">Dynasonic</span><span class="pv-btn">Demander un devis</span></div>
+      </div>
+    </div>
     <div class="meta">
       <div><div class="l">Composition</div><div class="v"><b>C</b> (âme) + base claire + <b>cover sombre de A</b></div></div>
       <div><div class="l">Force</div><div class="v">Base claire = pages de texte lisibles ; cover sombre = guitares qui ressortent. <span class="ok">La plus polyvalente.</span></div></div>
